@@ -267,17 +267,74 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
+
+  'nvim-tree/nvim-web-devicons',
+
+  -- NVim Tree
+  {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    cmd = { 'NvimTreeToogle', 'NvimTreeClose' },
+  },
+
+  -- Haskell
+  'neovimhaskell/haskell-vim',
+
+  {
+    'mrcjkb/haskell-tools.nvim',
+    branch = '1.x.x',
+    requires = {
+      'neovim/nvim-lspconfig',
+      'nvim-lua/plenary.nvim',
+      'nivm-telescope/telescope.nvim',
+    },
+  },
+
+  -- Purescript
+  'purescript-contrib/purescript-vim',
+
 }, {})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
--- Set highlight on search
-vim.o.hlsearch = false
+-- Number of lines to keep above and below the cursor
+vim.o.scrolloff = 5
 
 -- Make line numbers default
-vim.wo.number = true
+vim.o.number = true
+vim.o.numberwidth = 5
+vim.o.relativenumber = true
+vim.o.signcolumn = 'yes:2'
+vim.o.cursorline = true
+vim.o.wrap = false
+
+-- Better editing experience
+vim.o.expandtab = true
+vim.o.smarttab = true
+vim.o.cindent = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.hlsearch = false
+vim.o.list = true
+vim.o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
+
+-- Better buffer splitting
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+-- Preserve view while jumping
+vim.o.jumpoptions = 'view'
+
+-- Undo and backup options
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.swapfile = false
+vim.o.undofile = true
+vim.o.undodir = '/home/gnoel/.cache/nvim/undo'
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -289,20 +346,6 @@ vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -325,6 +368,8 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set('n', '<leader>pv', vim.cmd.NvimTreeToggle, { desc = 'Toggle the Explorer tree' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -423,7 +468,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'haskell', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
