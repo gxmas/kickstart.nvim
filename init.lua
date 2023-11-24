@@ -301,6 +301,13 @@ require('lazy').setup({
   -- Move
   'fedepujol/move.nvim',
 
+  -- ToggleTerm
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = true,
+  },
+
 }, {})
 
 -- [[ Setting options ]]
