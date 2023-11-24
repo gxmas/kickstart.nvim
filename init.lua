@@ -298,6 +298,9 @@ require('lazy').setup({
   -- Trim
   'cappyzawa/trim.nvim',
 
+  -- Move
+  'fedepujol/move.nvim',
+
 }, {})
 
 -- [[ Setting options ]]
