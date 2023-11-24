@@ -295,6 +295,9 @@ require('lazy').setup({
   -- Purescript
   'purescript-contrib/purescript-vim',
 
+  -- Trim
+  'cappyzawa/trim.nvim',
+
 }, {})
 
 -- [[ Setting options ]]
