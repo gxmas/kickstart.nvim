@@ -284,12 +284,12 @@ require('lazy').setup({
 
   {
     'mrcjkb/haskell-tools.nvim',
-    branch = '1.x.x',
-    requires = {
-      'neovim/nvim-lspconfig',
+    dependencies = {
       'nvim-lua/plenary.nvim',
-      'nivm-telescope/telescope.nvim',
+      'nvim-telescope/telescope.nvim',
     },
+    version = '^2',
+    ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
   },
 
   -- Purescript
