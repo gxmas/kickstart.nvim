@@ -1,9 +1,10 @@
-local status_ok, move = pcall(require, 'move')
+local status_ok, _ = pcall(require, 'move')
 if not status_ok then
     return
 end
 
 local opts = { noremap = true, silent = true }
+
 -- Normal-mode commands
 vim.keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
 vim.keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)

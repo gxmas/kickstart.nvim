@@ -42,7 +42,7 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true })
 local stack_ghci = Terminal:new({ cmd = 'stack ghci', hidden = true })
-local htop = Terminal:new({ cmd = 'htop', hidden = true })
+local btm = Terminal:new({ cmd = 'btm', hidden = true })
 
 function _LAZYGIT_TOGGLE()
     lazygit:toggle()
@@ -52,8 +52,8 @@ function _STACK_GHCI_TOGGLE()
     stack_ghci:toggle()
 end
 
-function _HTOP_TOGGLE()
-    htop:toggle()
+function _BTM_TOGGLE()
+    btm:toggle()
 end
 
 vim.keymap.set('n', [[<M-t>f]], '<cmd>execute v:count . "ToggleTerm direction=float"<CR>', { desc = 'Toggle to Terminal (float)' })
@@ -63,4 +63,4 @@ vim.keymap.set('n', [[<M-t>v]], '<cmd>execute v:count . "ToggleTerm direction=ve
 
 vim.keymap.set('n', [[<M-t>g]], '<cmd>lua _LAZYGIT_TOGGLE()<CR>', { silent = true, desc = 'Toggle to Lazy Git' })
 vim.keymap.set('n', [[<M-t>s]], '<cmd>lua _STACK_GHCI_TOGGLE()<CR>', { silent = true, desc = 'Toggle to Stack gchi' })
-vim.keymap.set('n', [[<M-t>t]], '<cmd>lua _HTOP_TOGGLE()<CR>', { silent = true, desc = 'Toggle to HTop' })
+vim.keymap.set('n', [[<M-t>t]], '<cmd>lua _BTM_TOGGLE()<CR>', { silent = true, desc = 'Toggle to btm' })
